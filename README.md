@@ -1,14 +1,18 @@
-# Chuck Norris Facts - Sample React Native app
+# Chuck Norris Facts
 
-## Just For Fun
+Just For Fun - React Native app
 
-| iOS | Android |
-|-----|---------|
-| <image src="media/ios.gif" width="200"> | <image src="media/android.gif" width="200"> |
+## Links
 
 React Native: https://facebook.github.io/react-native
 
-API: https://api.chucknorris.io/
+Facts API: https://api.chucknorris.io/
+
+## Sreenshots
+
+| iOS | Android |
+|-----|---------|
+| <image src="media/ios.gif" width="250"> | <image src="media/android.gif" width="250"> |
 
 ## PS
 
