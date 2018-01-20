@@ -27,4 +27,10 @@ export const Repository = {
             .catch(error => console.error(error))
     },
 
+    findFacts(query){
+        return fetch(URLS.SEARCH.replace("{query}", query))
+            .then(response => response.json())
+            .catch(error => console.error(error))
+    },
+
 }
