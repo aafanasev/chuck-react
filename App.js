@@ -1,34 +1,14 @@
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Button
-} from 'react-native';
+import { StackNavigator } from "react-navigation";
+import { HomeScreen } from "./screens/HomeScreen";
+import { RandomFactScreen } from "./screens/RandomFactScreen";
+import { SearchFactScreen } from "./screens/SearchFactScreen";
+import { CategoriesScreen } from "./screens/CategoriesScreen";
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Chuck Norris Facts</Text>
-        <Button title="Random" />
-        <Button title="Search" />
-        <Button title="Categories" />
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 30,
-  }
+const App = StackNavigator({
+  Home: { screen: HomeScreen },
+  Random: { screen: RandomFactScreen },
+  Search: { screen: SearchFactScreen },
+  Categories: { screen: CategoriesScreen },
 })
+
+export default App;
