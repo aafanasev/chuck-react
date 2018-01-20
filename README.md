@@ -2,6 +2,10 @@
 
 ## Just For Fun
 
+| iOS | Android |
+|-----|---------|
+| <image src="media/ios.gif" width="200"> | <image src="media/android.gif" width="200"> |
+
 React Native: https://facebook.github.io/react-native
 
 API: https://api.chucknorris.io/
