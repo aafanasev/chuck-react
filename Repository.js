@@ -14,9 +14,9 @@ export const Repository = {
             .catch(error => console.error(error))
     },
 
-    getRandomFact(category = null) {
+    getRandomFact(category) {
         let url;
-        if (category == null) {
+        if (typeof category === "undefined") {
             url = URLS.RANDOM_FACT;
         } else {
             url = URLS.RANDOM_CATEGORY_FACT.replace("{category}", category);

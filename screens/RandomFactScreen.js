@@ -10,8 +10,16 @@ import { Repository } from "../Repository";
 
 export class RandomFactScreen extends Component {
 
-    static navigationOptions = {
-        title: "Random fact"
+    static navigationOptions = ({ navigation }) => {
+        const { params } = navigation.state;
+        
+        let title = "Random fact";
+        if (typeof params !== "undefined"
+            && typeof params.categoryName !== "undefined") {
+            title += ": " + params.categoryName;
+        }
+        
+        return { title: title };
     };
 
     constructor(props) {
@@ -26,9 +34,16 @@ export class RandomFactScreen extends Component {
     }
 
     _loadFact() {
+        const { params } = this.props.navigation.state;
+
         this.setState({ isLoading: true })
 
-        Repository.getRandomFact()
+        let key;
+        if (typeof params !== "undefined") {
+            key = params.categoryKey;
+        }
+
+        Repository.getRandomFact(key)
             .then(fact => {
                 this.setState({
                     isLoading: false,

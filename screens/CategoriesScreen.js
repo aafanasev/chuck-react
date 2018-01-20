@@ -61,13 +61,17 @@ export class CategoriesScreen extends Component {
                 <FlatList
                     data={this.state.categories}
                     keyExtractor={(item, index) => index}
-                    renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => navigate("Random", item)}>
-                            <Text style={styles.listItem}>
-                                {this._formatCategoryName(item)}
-                            </Text>
-                        </TouchableOpacity>
-                    )}
+                    renderItem={({ item }) => {
+                        let name = this._formatCategoryName(item);
+                        return (
+                            <TouchableOpacity onPress={() => navigate("Random", {
+                                categoryKey: item,
+                                categoryName: name
+                            })}>
+                                <Text style={styles.listItem}>{name}</Text>
+                            </TouchableOpacity>
+                        );
+                    }}
                 />
             </View>
         );
