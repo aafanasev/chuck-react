@@ -4,6 +4,7 @@ import {
     View,
     Text,
     Button,
+    Share,
     ActivityIndicator
 } from "react-native";
 import { Repository } from "../Repository";
@@ -12,13 +13,13 @@ export class RandomFactScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         const { params } = navigation.state;
-        
+
         let title = "Random fact";
         if (typeof params !== "undefined"
             && typeof params.categoryName !== "undefined") {
             title += ": " + params.categoryName;
         }
-        
+
         return { title: title };
     };
 
@@ -52,6 +53,18 @@ export class RandomFactScreen extends Component {
             })
     }
 
+    _showShareDialog() {
+        Share.share(
+            {
+                message: this.state.fact.value,
+                url: this.state.fact.url
+            }, {
+                subject: "Share Chuck Norris fact",
+                dialogTitle: "Share Chuck Norris fact"
+            }
+        );
+    }
+
     render() {
         if (this.state.isLoading) {
             return (
@@ -70,6 +83,11 @@ export class RandomFactScreen extends Component {
                     title="One more"
                     onPress={() => {
                         this._loadFact();
+                    }} />
+                <Button style={styles.button}
+                    title="Share"
+                    onPress={() => {
+                        this._showShareDialog();
                     }} />
             </View>
         );
