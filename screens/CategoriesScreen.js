@@ -47,6 +47,7 @@ export class CategoriesScreen extends Component {
     }
 
     _getBackgroundImageUrl(categoryKey) {
+        // TODO: random images for now
         return {
             uri: "https://picsum.photos/200?random"
         };
