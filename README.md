@@ -12,6 +12,10 @@ Images API: https://picsum.photos/
 
 ## Sreenshots
 
+<a href="./media/">See screebshots</a>
+
+#### v1
+
 | iOS | Android |
 |-----|---------|
 | <image src="media/ios.gif" width="250"> | <image src="media/android.gif" width="250"> |
