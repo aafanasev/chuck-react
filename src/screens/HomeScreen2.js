@@ -3,9 +3,11 @@ import {
     StyleSheet,
     View,
     Text,
+    TouchableOpacity,
     TouchableHighlight
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 export class HomeScreen2 extends Component {
 
@@ -27,23 +29,35 @@ export class HomeScreen2 extends Component {
 
                 <View style={styles.bottom}>
 
-                    <TouchableHighlight
+                    <TouchableOpacity
                         style={styles.button}
                         onPress={() => console.log('s')}>
-                        <Text style={styles.buttonText}>More</Text>
-                    </TouchableHighlight>
+                        <Icon
+                            name="md-menu"
+                            size={40}
+                            color="#fff"
+                        />
+                    </TouchableOpacity>
 
-                    <TouchableHighlight
+                    <TouchableOpacity
                         style={styles.button}
                         onPress={() => console.log('s')}>
-                        <Text style={styles.buttonText}>Random</Text>
-                    </TouchableHighlight>
+                        <Icon
+                            name="md-infinite"
+                            size={80}
+                            color="#fff"
+                        />
+                    </TouchableOpacity>
 
-                    <TouchableHighlight
+                    <TouchableOpacity
                         style={styles.button}
                         onPress={() => console.log('s')}>
-                        <Text style={styles.buttonText}>Share</Text>
-                    </TouchableHighlight>
+                        <Icon
+                            name="md-share"
+                            size={40}
+                            color="#fff"
+                        />
+                    </TouchableOpacity>
 
                 </View>
 
@@ -70,20 +84,14 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
     },
     button: {
-        alignSelf: 'baseline',
-        margin: 10,
+        aspectRatio: 1,
         padding: 20,
         borderRadius: 40,
+        justifyContent: 'center',
         backgroundColor: '#20232c',
         elevation: 10,
-    },
-    buttonText: {
-        textAlign: 'center',
-        color: '#fff',
-        fontSize: 18,
-        fontWeight: 'bold',
     },
 });
