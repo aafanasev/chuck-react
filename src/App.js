@@ -5,12 +5,16 @@ import { RandomFactScreen } from "./screens/RandomFactScreen";
 import { SearchFactScreen } from "./screens/SearchFactScreen";
 import { CategoriesScreen } from "./screens/CategoriesScreen";
 
-const App = StackNavigator({
-  Home2: { screen: HomeScreen2 },
-  Home: { screen: HomeScreen },
-  Random: { screen: RandomFactScreen },
-  Search: { screen: SearchFactScreen },
-  Categories: { screen: CategoriesScreen },
-})
+const App = StackNavigator(
+  {
+    Home: { screen: HomeScreen },
+    Home2: { screen: HomeScreen2 },
+    Random: { screen: RandomFactScreen },
+    Search: { screen: SearchFactScreen },
+    Categories: { screen: CategoriesScreen },
+  }, {
+    initialRouteName: "Home2"
+  }
+)
 
 export default App;
