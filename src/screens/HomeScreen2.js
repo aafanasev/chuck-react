@@ -4,10 +4,20 @@ import {
     View,
     Text,
     TouchableOpacity,
+    ActivityIndicator,
+    ScrollView,
+    Alert,
+    FlatList,
     TouchableHighlight
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/Feather';
+import { Repository } from '../api/Repository';
+import { DEFAULT_CATEGORY } from "../api/Constants";
+
+import Categories from "../components/categories/Categories";
+import Button from "../components/button/Button";
+
 
 export class HomeScreen2 extends Component {
 
@@ -15,49 +25,91 @@ export class HomeScreen2 extends Component {
         header: null
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            category: DEFAULT_CATEGORY,
+            isLoading: true
+        };
+    }
+
+    componentDidMount() {
+        this._loadFact();
+    }
+
+    _loadFact() {
+        this.setState({ isLoading: true });
+
+        let category = DEFAULT_CATEGORY;
+
+        Repository
+            .getRandomFact()
+            .then(fact => {
+                this.setState({
+                    isLoading: false,
+                    fact: fact
+                });
+            })
+            .catch(e => {
+                Alert.alert("Oops! Something went wrong", "Please try again");
+            });
+    }
+
+    _onSelectCategory = (categoryId) => {
+        window.alert(categoryId);
+    }
+
     render() {
+
+        let content;
+        if (this.state.isLoading) {
+            content = (
+                <View style={styles.loading}>
+                    <ActivityIndicator
+                        size="large"
+                        color="#fff"
+                    />
+                </View>
+            );
+        } else {
+            content = (
+                <Text style={styles.text}>
+                    {this.state.fact.value}
+                </Text>
+            );
+        }
+
         return (
             <LinearGradient
-                colors={['#3f4551', '#383e4b', '#383e4b']}
+                colors={['#383e4b', '#3d434f', '#383e4b']}
                 style={styles.linearGradient}>
 
-                <View style={styles.top}>
-                    <Text style={styles.text}>
-                        Here will be text
-                        </Text>
+                <Categories
+                    style={styles.categories}
+                    onSelectCategory={this._onSelectCategory}
+                />
+
+                <View style={styles.content}>
+                    {content}
                 </View>
 
-                <View style={styles.bottom}>
+                <View style={styles.buttons}>
 
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => console.log('s')}>
-                        <Icon
-                            name="md-menu"
-                            size={40}
-                            color="#fff"
-                        />
-                    </TouchableOpacity>
+                    <Button
+                        icon="search"
+                        onPress={() => window.alert("search")}
+                    />
 
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => console.log('s')}>
-                        <Icon
-                            name="md-infinite"
-                            size={80}
-                            color="#fff"
-                        />
-                    </TouchableOpacity>
+                    <Button
+                        icon="repeat"
+                        main={true}
+                        onPress={() => this._loadFact()}
+                    />
 
-                    <TouchableOpacity
-                        style={styles.button}
-                        onPress={() => console.log('s')}>
-                        <Icon
-                            name="md-share"
-                            size={40}
-                            color="#fff"
-                        />
-                    </TouchableOpacity>
+                    <Button
+                        icon="upload"
+                        onPress={() => window.alert("upload")}
+                    />
 
                 </View>
 
@@ -70,28 +122,27 @@ export class HomeScreen2 extends Component {
 const styles = StyleSheet.create({
     linearGradient: {
         flex: 1,
-        padding: 15,
     },
-    top: {
-        flexGrow: 7,
+    categories: {
+        flex: 1,
+    },
+    content: {
+        flex: 3,
         justifyContent: 'center',
+        padding: 20,
+    },
+    loading: {
+
     },
     text: {
         color: "#fff",
         textAlign: 'center',
+        fontSize: 24,
     },
-    bottom: {
-        flexGrow: 1,
+    buttons: {
+        flex: 2,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-    },
-    button: {
-        aspectRatio: 1,
-        padding: 20,
-        borderRadius: 40,
-        justifyContent: 'center',
-        backgroundColor: '#20232c',
-        elevation: 10,
     },
 });
