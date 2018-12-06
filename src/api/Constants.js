@@ -1,7 +1,7 @@
 export const CATEGORIES = [
-    { id: "random", icon: "home" },
     { id: "explicit", icon: "alert-triangle" },
     { id: "dev", icon: "github" },
+    { id: "random", icon: "home" },
     { id: "movie", icon: "film" },
     { id: "food", icon: "target" },
     { id: "celebrity", icon: "tv" },
