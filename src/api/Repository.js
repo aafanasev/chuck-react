@@ -16,7 +16,7 @@ export const Repository = {
 
     getRandomFact(category) {
         let url;
-        if (typeof category === "undefined") {
+        if (category == "random") {
             url = URLS.RANDOM_FACT;
         } else {
             url = URLS.RANDOM_CATEGORY_FACT.replace("{category}", category);

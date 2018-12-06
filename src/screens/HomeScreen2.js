@@ -3,21 +3,14 @@ import {
     StyleSheet,
     View,
     Text,
-    TouchableOpacity,
     ActivityIndicator,
-    ScrollView,
-    Alert,
-    FlatList,
-    TouchableHighlight
+    Alert
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import Icon from 'react-native-vector-icons/Feather';
 import { Repository } from '../api/Repository';
-import { DEFAULT_CATEGORY } from "../api/Constants";
 
 import Categories from "../components/categories/Categories";
 import Button from "../components/button/Button";
-
 
 export class HomeScreen2 extends Component {
 
@@ -28,7 +21,7 @@ export class HomeScreen2 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            category: DEFAULT_CATEGORY,
+            category: 'random',
             isLoading: true
         };
     }
@@ -40,10 +33,8 @@ export class HomeScreen2 extends Component {
     _loadFact() {
         this.setState({ isLoading: true });
 
-        let category = DEFAULT_CATEGORY;
-
         Repository
-            .getRandomFact()
+            .getRandomFact(this.state.category)
             .then(fact => {
                 this.setState({
                     isLoading: false,
@@ -56,14 +47,13 @@ export class HomeScreen2 extends Component {
     }
 
     _onSelectCategory = (categoryId) => {
-        window.alert(categoryId);
+        this.setState({ category: categoryId });
+        this._loadFact();
     }
 
-    render() {
-
-        let content;
+    _renderContent() {
         if (this.state.isLoading) {
-            content = (
+            return (
                 <View style={styles.loading}>
                     <ActivityIndicator
                         size="large"
@@ -72,25 +62,28 @@ export class HomeScreen2 extends Component {
                 </View>
             );
         } else {
-            content = (
+            return (
                 <Text style={styles.text}>
                     {this.state.fact.value}
                 </Text>
             );
         }
+    }
 
+    render() {
         return (
             <LinearGradient
                 colors={['#383e4b', '#3d434f', '#383e4b']}
-                style={styles.linearGradient}>
+                style={styles.container}>
 
                 <Categories
                     style={styles.categories}
+                    selected={this.state.category}
                     onSelectCategory={this._onSelectCategory}
                 />
 
                 <View style={styles.content}>
-                    {content}
+                    {this._renderContent()}
                 </View>
 
                 <View style={styles.buttons}>
@@ -120,14 +113,14 @@ export class HomeScreen2 extends Component {
 }
 
 const styles = StyleSheet.create({
-    linearGradient: {
+    container: {
         flex: 1,
     },
     categories: {
         flex: 1,
     },
     content: {
-        flex: 3,
+        flex: 7,
         justifyContent: 'center',
         padding: 20,
     },
@@ -140,7 +133,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
     buttons: {
-        flex: 2,
+        flex: 4,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly',

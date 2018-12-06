@@ -15,7 +15,7 @@ export default class Categories extends React.PureComponent {
         <Category
             id={item.id}
             icon={item.icon}
-            selected={true}
+            selected={item.id == this.props.selected}
             onPress={this._onPressItem}
         />
     )
@@ -26,6 +26,7 @@ export default class Categories extends React.PureComponent {
                 data={CATEGORIES}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
+                extraData={this.props.selected}
                 horizontal={true}
             />
         );

@@ -31,7 +31,7 @@ const STYLES = StyleSheet.create({
     category: {
         marginLeft: 10,
         marginRight: 10,
-        paddingTop: 30,
+        paddingTop: 40,
         paddingBottom: 20,
         paddingLeft: 20,
         paddingRight: 20,

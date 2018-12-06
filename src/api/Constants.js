@@ -1,7 +1,5 @@
-export const DEFAULT_CATEGORY = 'random';
-
 export const CATEGORIES = [
-    { id: DEFAULT_CATEGORY, icon: "home" },
+    { id: "random", icon: "home" },
     { id: "explicit", icon: "alert-triangle" },
     { id: "dev", icon: "github" },
     { id: "movie", icon: "film" },
@@ -17,5 +15,5 @@ export const CATEGORIES = [
     { id: "travel", icon: "globe" },
     { id: "career", icon: "clipboard" },
     { id: "money", icon: "dollar-sign" },
-    { id: "fashion", icon: "scissors"}
+    { id: "fashion", icon: "scissors" }
 ];
