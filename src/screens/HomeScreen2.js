@@ -78,6 +78,9 @@ export class HomeScreen2 extends Component {
                         size="large"
                         color="#fff"
                     />
+                    <Text style={styles.loadingText}>
+                        Loading a joke from <Text style={{ fontWeight: 'bold' }}>{this.state.category}</Text>...
+                    </Text>
                 </View>
             );
         } else {
@@ -144,7 +147,15 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     loading: {
-
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    loadingText: {
+        padding: 20,
+        color: '#fff',
+        fontSize: 20,
     },
     text: {
         color: "#fff",
