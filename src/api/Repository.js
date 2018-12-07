@@ -5,7 +5,7 @@ const URLS = {
     SEARCH: "https://api.chucknorris.io/jokes/search?query={query}",
 };
 
-export const Repository = {
+const Repository = {
 
     getCategories() {
         return fetch(URLS.CATEGORIES)
@@ -34,3 +34,5 @@ export const Repository = {
     },
 
 }
+
+export default Repository;

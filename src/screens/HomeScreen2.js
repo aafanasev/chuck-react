@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import {
+    Alert,
+    ActivityIndicator,
+    Share,
     StyleSheet,
     View,
     Text,
-    ActivityIndicator,
-    Alert
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import { Repository } from '../api/Repository';
 
+import Repository from '../api/Repository';
 import Categories from "../components/categories/Categories";
 import Button from "../components/button/Button";
 
@@ -49,6 +50,24 @@ export class HomeScreen2 extends Component {
     _onSelectCategory = (categoryId) => {
         this.setState({ category: categoryId });
         this._loadFact();
+    }
+
+    _onClickShare() {
+        if (this.state.isLoading) {
+            return;
+        }
+
+        const message = {
+            message: this.state.fact.value,
+            url: this.state.fact.url,
+        };
+
+        const title = {
+            subject: 'Chuck Norris fact',
+            dialogTitle: 'Share Chuck Norris fact'
+        };
+
+        Share.share(message, title);
     }
 
     _renderContent() {
@@ -101,7 +120,7 @@ export class HomeScreen2 extends Component {
 
                     <Button
                         icon="upload"
-                        onPress={() => window.alert("upload")}
+                        onPress={() => this._onClickShare()}
                     />
 
                 </View>
