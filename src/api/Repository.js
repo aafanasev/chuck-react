@@ -1,8 +1,8 @@
 const URLS = {
-    CATEGORIES: "https://api.chucknorris.io/jokes/categories",
-    RANDOM_FACT: "https://api.chucknorris.io/jokes/random",
-    RANDOM_CATEGORY_FACT: "https://api.chucknorris.io/jokes/random?category={category}",
-    SEARCH: "https://api.chucknorris.io/jokes/search?query={query}",
+    CATEGORIES: 'https://api.chucknorris.io/jokes/categories',
+    RANDOM_FACT: 'https://api.chucknorris.io/jokes/random',
+    RANDOM_CATEGORY_FACT: 'https://api.chucknorris.io/jokes/random?category={category}',
+    SEARCH: 'https://api.chucknorris.io/jokes/search?query={query}',
 };
 
 const Repository = {
@@ -16,10 +16,10 @@ const Repository = {
 
     getRandomFact(category) {
         let url;
-        if (category == "random") {
+        if (category == 'random') {
             url = URLS.RANDOM_FACT;
         } else {
-            url = URLS.RANDOM_CATEGORY_FACT.replace("{category}", category);
+            url = URLS.RANDOM_CATEGORY_FACT.replace('{category}', category);
         }
 
         return fetch(url)
@@ -28,7 +28,7 @@ const Repository = {
     },
 
     findFacts(query) {
-        return fetch(URLS.SEARCH.replace("{query}", query))
+        return fetch(URLS.SEARCH.replace('{query}', query))
             .then(response => response.json())
             .catch(error => console.error(error))
     },
