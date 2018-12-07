@@ -13,7 +13,7 @@ import Repository from '../api/Repository';
 import Categories from '../components/categories/Categories';
 import Button from '../components/button/Button';
 
-export class HomeScreen2 extends Component {
+export class HomeScreen extends Component {
 
     static navigationOptions = {
         header: null
