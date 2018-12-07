@@ -73,19 +73,19 @@ export class HomeScreen2 extends Component {
     _renderContent() {
         if (this.state.isLoading) {
             return (
-                <View style={styles.loading}>
+                <View style={STYLES.loading}>
                     <ActivityIndicator
                         size="large"
                         color="#fff"
                     />
-                    <Text style={styles.loadingText}>
+                    <Text style={STYLES.loadingText}>
                         Loading a joke from <Text style={{ fontWeight: 'bold' }}>{this.state.category}</Text>...
                     </Text>
                 </View>
             );
         } else {
             return (
-                <Text style={styles.text}>
+                <Text style={STYLES.text}>
                     {this.state.fact.value}
                 </Text>
             );
@@ -96,19 +96,19 @@ export class HomeScreen2 extends Component {
         return (
             <LinearGradient
                 colors={['#383e4b', '#3d434f', '#383e4b']}
-                style={styles.container}>
+                style={STYLES.container}>
 
                 <Categories
-                    style={styles.categories}
+                    style={STYLES.categories}
                     selected={this.state.category}
                     onSelectCategory={this._onSelectCategory}
                 />
 
-                <View style={styles.content}>
+                <View style={STYLES.content}>
                     {this._renderContent()}
                 </View>
 
-                <View style={styles.buttons}>
+                <View style={STYLES.buttons}>
 
                     <Button
                         icon="search"
@@ -134,7 +134,7 @@ export class HomeScreen2 extends Component {
 
 }
 
-const styles = StyleSheet.create({
+const STYLES = StyleSheet.create({
     container: {
         flex: 1,
     },
