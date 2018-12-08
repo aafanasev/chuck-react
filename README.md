@@ -1,25 +1,19 @@
-# Chuck Norris Facts
+# Chuck Norris facts
 
-Just For Fun - React Native app
+Simple Android/iOS application written in React Native
 
-## Links
+Big thanks https://api.chucknorris.io/ team for their API
 
-React Native: https://facebook.github.io/react-native
+## Screenshots
 
-Facts API: https://api.chucknorris.io/
+### Android
 
-Images API: https://picsum.photos/
+|Home|Search|Share|
+|:--:|:----:|:---:|
+| <img src="./!media/home-android.png"> | <img src="./!media/search-android.png"> |  <img src="./!media/share-android.png"> |
 
-## Sreenshots
+### iOS
 
-<a href="./media/">See screebshots</a>
-
-#### v1
-
-| iOS | Android |
-|-----|---------|
-| <image src="media/ios.gif" width="250"> | <image src="media/android.gif" width="250"> |
-
-## PS
-
-Sorry for bad code, I'm not pro JS developer ;)
+|Home|Search|Share|
+|:--:|:----:|:---:|
+| <img src="./!media/home-ios.png"> | <img src="./!media/search-ios.png"> |  <img src="./!media/share-ios.png"> |
